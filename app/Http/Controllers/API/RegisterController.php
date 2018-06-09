@@ -23,7 +23,7 @@ class RegisterController extends Controller
         $user->email    = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
-        $token          = JWTAuth::fromUser($user);
+        $token          = $user->createToken('My App')->accessToken;
         return response()->json($token);
     }
 }
