@@ -19,5 +19,6 @@ Route::middleware('jwt.auth')->get('/user', function (Request $request) {
 Route::namespace('API')->group(function () {
     Route::post('register', 'RegisterController@register');
     Route::post('login', 'LoginController@login');
-    Route::post('logout', 'LoginController@logout')->middleware('jwt.auth');
+    Route::resource('books','BookController')->middleware('jwt.auth');
+    // Route::post('logout', 'LoginController@logout')->middleware('jwt.auth');
 });
